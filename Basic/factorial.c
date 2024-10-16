@@ -1,16 +1,13 @@
 #include <stdio.h>
-int main()
-{
+int main(){
     int n,i,factorial=1;
     printf("enter a positive integer: ");
     scanf("%d",&n);
 
-    if (n<0)
-    {
+    if (n<0){
         printf("invalid number.");
     }
-    else
-    {
+    else{
         for(i=1; i<=n; i++)
         {
             factorial*=i;
