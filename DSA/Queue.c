@@ -18,19 +18,41 @@ void Enqueue(){
     if(rear == n-1){
         printf("\n--> Overflow, can't push more elements.\n");
     }
-    else if(rear == -1 && front == -1){
-        rear++;
-        front++;
+    else{
         int val;
         printf("\n--> Enter the element to push: ");
-        scanf("%d",&val);
-        queue[rear]=val;
+        scanf("%d", &val);
+
+        if (front == -1 && rear == -1) { 
+            front = 0;
+        }
+        rear++;
+        queue[rear] = val;
+    }
+}
+
+void Dequeue(){
+    if(rear == -1 && front == -1){
+        printf("\n--> Underflow, can't delete an element.");
+    }
+    else if(front == rear){
+        printf("\n--> Deleted element: %d",queue[front]);
+        front = rear = -1;
     }
     else{
-        rear++;
-        int val;
-        printf("\n--> Enter the element to push: ");
-        scanf("%d",&val);
-        queue[rear]=val;
+        printf("\n--> Deleted element: %d",queue[front]);
+        front++;
+    }
+}
+
+void Show(){
+    if(front == -1 && rear==-1){
+        printf("\n--> Queue is empty.\n");
+    }
+    else{
+        printf("Queue elements are: \n");
+        for(int i=front; i<=rear; i++){
+            printf("%d",queue[i]);
+        }
     }
 }
