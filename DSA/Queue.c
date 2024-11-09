@@ -8,9 +8,35 @@ void Front(); //peek
 void Rear();
 void isFull();
 void isEmpty();
+void Show();
 
 int main(){
-
+    printf("Enter the number of Elements in the queue: ");
+    scanf("%d",&n);
+    printf("\n******** Queue Operations ********\n");
+    printf("----------------------------------\n");
+    while(choice!=7){
+        printf("\nChoose from the below options:\n");
+        printf(" 1.enqueue \n 2.dequeue \n 3.show \n 4.EXIT\n");
+        printf("Enter your choice: ");
+        scanf("%d",&choice);
+        switch(choice){
+            case 1:
+                Enqueue();
+                break;
+            case 2:
+                Dequeue();
+                break;
+            case 3:
+                Show();
+                break;
+            case 4:
+                printf("\n--> Exiting....\n");
+                break;
+            default:
+                printf("\n--> Enter a valid choice. \n");
+        }
+    }
     return 0;
 }
 
@@ -50,9 +76,9 @@ void Show(){
         printf("\n--> Queue is empty.\n");
     }
     else{
-        printf("Queue elements are: \n");
+        printf("Queue elements are:\n");
         for(int i=front; i<=rear; i++){
-            printf("%d",queue[i]);
+            printf("%d  ",queue[i]);
         }
     }
 }
