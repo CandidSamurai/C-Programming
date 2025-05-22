@@ -1,21 +1,25 @@
 #include <stdio.h>
+
 int main(){
-    int p[20],bt[20],wt[20],tat[20],i,j,temp,n;
+    int p[20],pri[20],bt[20],wt[20],tat[20],i,j,temp,n;
     float avg_wt=0, avg_tat=0;
-    
-    printf("Enter the number of Processes: ");
+
+    printf("Enter the number of processes: ");
     scanf("%d",&n);
 
     for(i=0; i<n; i++){
-        p[i]=i+1;
-        printf("Enter the brust time for Process %d: ",p[i]);
-        scanf("%d",&bt[i]);
+        p[i] = i+1;
+        printf("Enter Brust Time & Priority for Process %d: ",p[i]);
+        scanf("%d %d",&bt[i],&pri[i]);
     }
 
-    //short using bubble short
+    //Sort based on priority (ascending order)
     for(i=0; i<n-1; i++){
         for(j=i+1; j<n; j++){
-            if(bt[i] > bt[j]){
+            if(pri[i] > pri[j]){
+                temp = pri[i];
+                pri[i] = pri[j];
+                pri[j] = temp;
 
                 temp = bt[i];
                 bt[i] = bt[j];
@@ -40,12 +44,12 @@ int main(){
         avg_tat += tat[i];
     }
 
-    printf("\nProcess\tBrust Time\tWaiting Time\tTurnaround Time");
+    printf("\nProcess\tPriority\tBrust Time\tWaiting Time\tTurnaround Time\n");
     for(i=0; i<n; i++){
-        printf("\nP%d\t%d\t\t%d\t\t%d\n",p[i],bt[i],wt[i],tat[i]);
+        printf("P%d\t%d\t\t%d\t\t%d\t\t%d\n",p[i],pri[i],bt[i],wt[i],tat[i]);
     }
-    printf("\nAverage waiting time: %f",avg_wt/n);
-    printf("\nAverage turnaround time: %f",avg_tat/n);
+    printf("\nAverage Waiting Time: %f", avg_wt/n);
+    printf("\nAverage Turnaround Time: %f", avg_tat/n);
 
     return 0;
 }

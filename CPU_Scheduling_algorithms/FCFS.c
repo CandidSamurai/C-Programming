@@ -16,6 +16,7 @@ int main(){
     wt[0] = 0;
     tat[0] = bt[0];
     avg_tat = tat[0];
+    avg_wt = wt[0]; //no need, for the sake of good pracitce
 
     for(i=1; i<n; i++){
         wt[i] = wt[i-1] + bt[i-1];
